@@ -1,3 +1,4 @@
 class Player < ApplicationRecord
-  attr_accessor :name
+  belongs_to :tourney_set
+  
 end

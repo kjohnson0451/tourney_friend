@@ -1,0 +1,1 @@
+json.array! @tourney_sets, partial: 'tourney_sets/tourney_set', as: :tourney_set
