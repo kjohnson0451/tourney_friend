@@ -19,6 +19,7 @@ class BracketsController < ApplicationController
 
   # GET /brackets/1/edit
   def edit
+    
   end
 
   # POST /brackets
