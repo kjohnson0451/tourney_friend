@@ -1,4 +1,4 @@
 class Bracket < ApplicationRecord
-  has_many :brackets
+  has_many :tourney_sets
   has_many :players
 end

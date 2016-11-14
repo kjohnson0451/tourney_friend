@@ -4,3 +4,7 @@
   <%= f.input :name %>
   <%= f.button :submit %>
 <% end %>
+
+<% @player.errors.each do |attr, msg| %>
+<%= "#{attr} #{msg}" %>
+<% end %>
