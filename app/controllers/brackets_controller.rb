@@ -1,5 +1,6 @@
 class BracketsController < ApplicationController
   before_action :set_bracket, only: [:show, :edit, :update, :destroy]
+  before_action :set_all_players, only: [:new, :edit]
 
   # GET /brackets
   # GET /brackets.json
@@ -19,7 +20,6 @@ class BracketsController < ApplicationController
 
   # GET /brackets/1/edit
   def edit
-    
   end
 
   # POST /brackets
@@ -62,14 +62,20 @@ class BracketsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bracket
       @bracket = Bracket.find(params[:id])
     end
 
+    def set_all_players
+      @all_players = Player.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def bracket_params
-      params.fetch(:bracket, {})
+      params.fetch(:bracket, {}).permit(:name, :enrolled_players)
     end
+
 end

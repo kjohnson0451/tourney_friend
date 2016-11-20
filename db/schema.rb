@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114031856) do
+ActiveRecord::Schema.define(version: 20161116211025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,14 @@ ActiveRecord::Schema.define(version: 20161114031856) do
   create_table "brackets", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "player_id"
-    t.index ["player_id"], name: "index_brackets_on_player_id", using: :btree
+    t.string   "name"
+  end
+
+  create_table "brackets_players", force: :cascade do |t|
+    t.integer "bracket_id"
+    t.integer "player_id"
+    t.index ["bracket_id"], name: "index_brackets_players_on_bracket_id", using: :btree
+    t.index ["player_id"], name: "index_brackets_players_on_player_id", using: :btree
   end
 
   create_table "players", force: :cascade do |t|
@@ -33,5 +39,6 @@ ActiveRecord::Schema.define(version: 20161114031856) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "brackets", "players"
+  add_foreign_key "brackets_players", "brackets"
+  add_foreign_key "brackets_players", "players"
 end
