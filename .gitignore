@@ -5,6 +5,7 @@
 # git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore all logfiles and tempfiles.
+.byebug_history
 /log/*
 /tmp/*
 /shared/log/*

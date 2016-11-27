@@ -25,7 +25,8 @@ class BracketsController < ApplicationController
   # POST /brackets
   # POST /brackets.json
   def create
-    @bracket = Bracket.new(bracket_params)
+    @bracket = Bracket.new(bracket_params)    
+    @bracket.players
 
     respond_to do |format|
       if @bracket.save
@@ -75,7 +76,7 @@ class BracketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bracket_params
-      params.fetch(:bracket, {}).permit(:name, :enrolled_players)
+      params.fetch(:bracket, {}).permit(:name)
     end
 
 end
