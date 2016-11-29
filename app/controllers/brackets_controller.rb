@@ -25,17 +25,17 @@ class BracketsController < ApplicationController
   # POST /brackets
   # POST /brackets.json
   def create
-    @bracket = Bracket.new(bracket_params)    
-    @bracket.players
+    debugger
+    @bracket = Bracket.new(bracket_params)
 
-    respond_to do |format|
-      if @bracket.save
-        format.html { redirect_to @bracket, notice: 'Bracket was successfully created.' }
-        format.json { render :show, status: :created, location: @bracket }
-      else
-        format.html { render :new }
-        format.json { render json: @bracket.errors, status: :unprocessable_entity }
-      end
+    for player_id in params["player_ids"]
+      @bracket.pairings << Player.find(player_id)
+    end
+
+    if @bracket.save
+      redirect_to @bracket, notice: 'Bracket was successfully created.'
+    else
+      render :new
     end
   end
 

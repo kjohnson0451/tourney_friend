@@ -16,33 +16,33 @@ ActiveRecord::Schema.define(version: 20161122231536) do
   enable_extension "plpgsql"
 
   create_table "brackets", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "pairings", force: :cascade do |t|
-    t.integer  "bracket_id"
-    t.integer  "tourney_set_id"
-    t.string   "seedable_type"
-    t.integer  "seedable_id"
-    t.integer  "seed_num"
-    t.integer  "winning_player_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "bracket_id",     null: false
+    t.integer  "tourney_set_id", null: false
+    t.string   "seedable_type",  null: false
+    t.integer  "seedable_id",    null: false
+    t.integer  "seed_num",       null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "players", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tourney_sets", force: :cascade do |t|
-    t.integer  "bracket_id"
-    t.integer  "tourney_set_num"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "bracket_id",        null: false
+    t.integer  "tourney_set_num",   null: false
+    t.integer  "winning_player_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
