@@ -1,6 +1,6 @@
 <%= simple_form_for @bracket do |f| %>
 <%= f.input :name %>
-<%= select_tag 'player_ids',
+<%# select_tag 'player_ids',
     options_from_collection_for_select(@all_players, :id, :name),
     multiple: true, class: 'multiselectuser' %>
 <%= f.button :submit %>

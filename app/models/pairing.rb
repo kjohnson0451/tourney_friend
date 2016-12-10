@@ -1,6 +1,7 @@
 class Pairing < ApplicationRecord
   belongs_to :tourney_set
   belongs_to :seedable , polymorphic: true
-  belongs_to :bracket
-  
+  # TODO: Uncomment this when appropriate
+  #belongs_to :bracket
+
 end

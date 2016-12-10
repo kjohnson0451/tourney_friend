@@ -25,12 +25,19 @@ class BracketsController < ApplicationController
   # POST /brackets
   # POST /brackets.json
   def create
-    debugger
     @bracket = Bracket.new(bracket_params)
+    enrolled_players = []
 
-    for player_id in params["player_ids"]
-      @bracket.pairings << Player.find(player_id)
-    end
+    root_set = TourneySet.create
+    next_set = TourneySet.create
+
+    root_set.pairings << next_set
+
+    @bracket.tourney_sets << root_set
+
+    #for player_id in params["player_ids"]
+    #  enrolled_players << Player.find(player_id)
+    #end
 
     if @bracket.save
       redirect_to @bracket, notice: 'Bracket was successfully created.'

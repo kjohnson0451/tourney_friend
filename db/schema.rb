@@ -22,13 +22,12 @@ ActiveRecord::Schema.define(version: 20161122231536) do
   end
 
   create_table "pairings", force: :cascade do |t|
-    t.integer  "bracket_id",     null: false
     t.integer  "tourney_set_id", null: false
-    t.string   "seedable_type",  null: false
-    t.integer  "seedable_id",    null: false
-    t.integer  "seed_num",       null: false
+    t.string   "seedable_type"
+    t.integer  "seedable_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["seedable_type", "seedable_id"], name: "index_pairings_on_seedable_type_and_seedable_id", using: :btree
   end
 
   create_table "players", force: :cascade do |t|
@@ -38,11 +37,9 @@ ActiveRecord::Schema.define(version: 20161122231536) do
   end
 
   create_table "tourney_sets", force: :cascade do |t|
-    t.integer  "bracket_id",        null: false
-    t.integer  "tourney_set_num",   null: false
-    t.integer  "winning_player_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "bracket_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
